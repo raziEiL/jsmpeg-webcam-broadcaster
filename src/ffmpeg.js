@@ -1,7 +1,7 @@
 const child_process = require("child_process");
 const EventEmitter = require("events");
 const path = require("path");
-const FFMPEG_PATH = path.join(__dirname, "..", "ffmpeg/ffmpeg.exe");
+const FFMPEG_PATH = path.join(__dirname, "ffmpeg/ffmpeg.exe");
 const argsFromOpts = (opts) => ["-f", "dshow", "-i", `video=${opts.device}`, "-r", `${opts.r}`, "-f", "mpegts", "-codec:v", "mpeg1video", "-b:v", `${opts.v}k`, "-bf", "0", "-headers", `Authorization: ${opts.auth}`, `${opts.url}`];
 /*
 * RegEx to get dshow lines
@@ -115,32 +115,6 @@ class FFmpeg extends EventEmitter {
 }
 
 module.exports = { FFmpeg };
-/*
-FFmpeg.getDevices().then(devies => {
-    for (const device of devies) {
-        if (device !== "DroidCam Source 2") continue;
-
-        console.log("run ffmpeg");
-        const ffmpeg = new FFmpeg({ device, r: 30, v: 2000, auth: "supersecret", url: "https://ce440c7dea0941.localhost.run/stream" });
-        ffmpeg.run();
-
-        ffmpeg.on("spawn", () => {
-            console.log("spawn");
-        });
-        ffmpeg.on("close", () => {
-            console.log("close");
-        });
-
-        setTimeout(() => {
-            console.log(ffmpeg.process ? 1 : 0);
-            ffmpeg.stop();
-            console.log("stop by timeout");
-        }, 8000);
-
-        break;
-    }
-}).catch(console.error);
- */
 
 /* Output from: ffmpeg -list_devices true -f dshow -i dummy
 

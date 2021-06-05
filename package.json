@@ -2,12 +2,13 @@
   "name": "webcam-broadcaster",
   "version": "1.0.0",
   "description": "Simple FFmpeg GUI for webcam streaming",
-  "main": "main.js",
+  "main": "./src/main.js",
   "scripts": {
-    "start": "electron .",
-    "build": "electron-packager . --overwrite --platform=win32 --arch=ia32 --out=out",
+    "start": "electron-forge start",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx ./ --ignore-pattern ./**/*.spec.ts"
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx ./ --ignore-pattern ./**/*.spec.ts",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
   },
   "productName": "Webcam Broadcaster",
   "repository": {
@@ -20,10 +21,44 @@
   },
   "license": "GPL-3.0",
   "devDependencies": {
+    "@electron-forge/cli": "^6.0.0-beta.57",
+    "@electron-forge/maker-deb": "^6.0.0-beta.57",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.57",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.57",
+    "@electron-forge/maker-zip": "^6.0.0-beta.57",
     "electron": "^13.1.0",
-    "electron-packager": "^15.2.0",
     "eslint": "^7.27.0",
     "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-unicorn": "^33.0.1"
+  },
+  "dependencies": {
+    "electron-squirrel-startup": "^1.0.0"
+  },
+  "config": {
+    "forge": {
+      "packagerConfig": {},
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "webcam_broadcaster"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ]
+    }
   }
 }

@@ -1,6 +1,8 @@
+// All of the Node.js APIs are available in the preload process.
+// It has the same sandbox as a Chrome extension.
 const { FFmpeg } = require("./ffmpeg");
 const fs = require("fs");
-const config = require("../../package.json");
+const config = require("../package.json");
 
 // parse cookie
 let cookie;
@@ -9,11 +11,6 @@ try {
     cookie = fs.readFileSync("cookie.json");
     cookie = JSON.parse(cookie);
 } catch { }
-
-//const cookie = require("./cookie.json");
-//const COOKIE_PATH = require("path").join(__dirname, "cookie.json");
-// All of the Node.js APIs are available in the preload process.
-// It has the same sandbox as a Chrome extension.
 
 window.addEventListener("DOMContentLoaded", () => {
     const body = document.querySelector("body");

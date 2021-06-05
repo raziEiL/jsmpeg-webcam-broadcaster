@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <title>Webcam Broadcaster</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    <main>
+        <form>
+            <label for="url">Сервер</label>
+            <input type="url" id="url" name="url" pattern="https://.*" placeholder="https://example.com">
+            <label for="pw">Ключ потока</label>
+            <input type="password" id="auth" name="auth" value="">
+            <label for="device">Источник</label>
+            <select name="device" id="device" required>
+                <!--     <option value="DroidCam Source 3">DroidCam Source 3</option> -->
+            </select>
+            <img id="update-icon" src="assets/img/update-arrows-2.png" alt="refresh">
+            <label for="bitrate">Качество</label>
+            <select name="bitrate" id="bitrate" required>
+                <option value="2000">Высокое</option>
+                <option value="1500" selected>Среднее</option>
+                <option value="1000">Низкое</option>
+            </select>
+            <label for="fps">Fps</label>
+            <input type="number" id="fps" value="30" min="10" max="60" required>
+            <input id="submit" type="submit" value="Запустить трансляцию">
+            <p id="stats"></p>
+        </form>
+    </main>
+    <hr>
+    <footer>
+        <p>Версия: <span id="version"></span></p>
+        <p>© Copyright 2021, Medvedev Denis</p>
+        <a href="https://github.com/raziEiL"><img src="assets/img/GitHub-Mark-32px.png" alt="GitHub"></a>
+    </footer>
+    <!-- You can also require other files to run in this process -->
+    <!--    <script src="./assets/js-render/js.cookie.js"></script> -->
+</body>
+
+</html>

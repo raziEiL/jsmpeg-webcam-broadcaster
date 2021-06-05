@@ -1,0 +1,44 @@
+{
+    "env": {
+        "browser": true,
+        "es6": true,
+        "node": true
+    },
+    "globals": {
+        "window": true,
+        "ActiveXObject": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:import/errors",
+        "plugin:import/warnings",
+        "plugin:unicorn/recommended"
+    ],
+    "plugins": [
+        "import",
+        "unicorn"
+    ],
+    "rules": {
+        "quotes": ["error", "double", {
+            "avoidEscape": true
+        }],
+        "semi": ["error", "always", {
+            "omitLastInOneLineBlock": true
+        }],
+        "indent": ["error", 4, {
+            "SwitchCase": 1
+        }],
+        "no-empty": ["error", {
+            "allowEmptyCatch": true
+        }],
+        "unicorn/no-fn-reference-in-iterator": "warn",
+        "unicorn/no-abusive-eslint-disable": "warn",
+        "unicorn/prefer-ternary": "off",
+        "unicorn/no-useless-undefined": "warn",
+        "unicorn/prevent-abbreviations": "off",
+        "unicorn/catch-error-name": "off",
+        "unicorn/explicit-length-check": "off",
+        "unicorn/no-null": "warn",
+        "unicorn/prefer-module": "off"
+    }
+}

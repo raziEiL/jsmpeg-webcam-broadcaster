@@ -1,0 +1,86 @@
+@font-face {
+    font-family: 'Open Sans';
+    src: url("../font/OpenSans-Regular.ttf");
+}
+
+html {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    padding: 1rem;
+    transition: background-color 1s ease-in-out;
+}
+
+form {
+    display: block;
+    margin: 0 auto;
+    width: 14em;
+    position: relative;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.2em;
+    line-height: 1.5;
+}
+
+input,
+select {
+    width: 100%;
+    height: 1.8em;
+    box-sizing: border-box;
+    line-height: 1.5;
+    color: #202325;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    font-size: 13px;
+    margin-bottom: 0.4em;
+}
+
+#submit {
+    display: block;
+    margin-top: 1.8em;
+    font-size: 14px;
+    height: initial;
+    cursor: pointer;
+}
+
+hr {
+    margin: 3rem 0 1rem 0;
+    border-top: 1px solid #202325;
+    border-bottom: none;
+    border-radius: 5px;
+    opacity: 0.5;
+}
+
+p {
+    margin: 0.2em;
+    font-size: 13px;
+    text-align: center;
+    color: #3c4246;
+}
+
+img {
+    display: block;
+    margin: 0 auto;
+}
+
+#stats {
+    height: 13px;
+}
+
+#update-icon {
+    position: absolute;
+    cursor: pointer;
+    top: 131px;
+    right: -34px;
+    opacity: 0.9;
+    height: 20px;
+}

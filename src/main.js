@@ -1,5 +1,5 @@
 // Modules to control application life and create native browser window
-const { app, BrowserWindow } = require("electron");
+const { app, BrowserWindow, shell } = require("electron");
 
 // https://www.electronforge.io/config/makers/squirrel.windows
 if (require("electron-squirrel-startup"))
@@ -11,19 +11,28 @@ function createWindow() {
     // Create the browser window.
     const mainWindow = new BrowserWindow({
         width: 320,
-        height: 540,
+        height: 530,
         fullscreenable: false,
         resizable: false,
         webPreferences: {
             preload: path.join(__dirname, "preload.js")
         }
     });
+    // disable menu
     mainWindow.setMenuBarVisibility(false);
+
     // and load the index.html of the app.
     mainWindow.loadFile(path.join(__dirname, "assets/html/index.html"));
 
     // Open the DevTools.
-    //mainWindow.webContents.openDevTools();
+    // mainWindow.webContents.openDevTools();
+
+    // Open all links in external browser
+    mainWindow.webContents.on("will-navigate", (event, url) => {
+        event.preventDefault();
+        if (url.startsWith("http"))
+            shell.openExternal(url);
+    });
 }
 
 // This method will be called when Electron has finished

@@ -52,7 +52,7 @@ class FFmpeg extends EventEmitter {
             const size = data.match(REGEX_SIZE);
             if (!size || !size[1]) return;
 
-            if (this.frameCount < 3)
+            if (this.frameCount < 5)
                 this.frameCount++;
             else if (!this.connected) {
                 this.connected = true;

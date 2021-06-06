@@ -80,6 +80,7 @@ window.addEventListener("DOMContentLoaded", () => {
                     console.error(err);
             });
         }
+        // blocks browser page reloads
         event.preventDefault();
     });
 });

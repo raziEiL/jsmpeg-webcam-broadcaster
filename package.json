@@ -11,6 +11,13 @@
     "make": "electron-forge make"
   },
   "productName": "Webcam Broadcaster",
+  "keywords": [
+    "ffmpeg",
+    "webcamera",
+    "stream",
+    "jsmpeg",
+    "electron"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/raziEiL/webcam-broadcaster.git"

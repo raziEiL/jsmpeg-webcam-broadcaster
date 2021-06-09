@@ -9,3 +9,5 @@ webcam-broadcaster (client) > websocket (backend) > jsmpeg player (frontend)
 Due this application is developed for a small community speaking on my native language I didn't add English translation.  
 But is not hard to understand the meaning of the app fields.
 
+## Preview:
+![](https://github.com/raziEiL/webcam-broadcaster/blob/master/git-img/webcam-broadcaster-01.png "app screenshot")

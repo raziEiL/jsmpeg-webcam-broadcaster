@@ -1,6 +1,6 @@
 {
   "name": "webcam-broadcaster",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Simple FFmpeg GUI for webcam streaming",
   "main": "./src/main.js",
   "scripts": {

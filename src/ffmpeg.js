@@ -38,7 +38,6 @@ class FFmpeg extends EventEmitter {
             return;
 
         this.child = child_process.spawn(FFMPEG_PATH, argsFromOpts(this.opts));
-        this.frameCount = 0;
         this.connected = false;
         this.emit("connection");
 
@@ -52,9 +51,8 @@ class FFmpeg extends EventEmitter {
             const size = data.match(REGEX_SIZE);
             if (!size || !size[1]) return;
 
-            if (this.frameCount < 5)
-                this.frameCount++;
-            else if (!this.connected) {
+            // this is not a good way to detect is connection established
+            if (!this.connected && frame[1] > 50) {
                 this.connected = true;
                 this.emit("connected");
             }

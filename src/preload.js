@@ -3,7 +3,8 @@
 const { FFmpeg } = require("./ffmpeg");
 const fs = require("fs");
 const config = require("../package.json");
-
+const RECONNECTION_DELAY = 2000;
+const RECONNECTION_COUNT = 3;
 // parse cookie
 let cookie;
 
@@ -43,29 +44,47 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     const ffmpeg = new FFmpeg(stats);
+    let disconnectedByUser = false, reconnectCount = 0, timeout;
 
     ffmpeg.on("connection", () => {
         body.style.backgroundColor = "#44C3EE";
-        btn.value = "Подключение...";
+        btn.value = reconnectCount ? `Переподключение ${reconnectCount}/${RECONNECTION_COUNT}` : "Подключение...";
     });
 
     ffmpeg.on("connected", () => {
         body.style.backgroundColor = "#24F9C1";
         btn.value = "Остановить трансляцию";
+        reconnectCount = 0;
     });
 
     ffmpeg.on("disconnected", () => {
         body.style.backgroundColor = "white";
         btn.value = "Запустить трансляцию";
+
+        if (!disconnectedByUser && reconnectCount < RECONNECTION_COUNT) {
+            timeout = setTimeout(() => {
+                timeout = undefined;
+                reconnectCount++;
+                btn.click();
+            }, RECONNECTION_DELAY);
+        }
+        else
+            reconnectCount = 0;
     });
 
     form.addEventListener("submit", function (event) {
+        if (timeout) {
+            clearTimeout(timeout);
+            reconnectCount = 0;
+        }
         if (ffmpeg.child) {
             console.log("ffmpeg.stop()");
+            disconnectedByUser = true;
             ffmpeg.stop();
         }
         else {
             console.log("ffmpeg.run()");
+            disconnectedByUser = false;
             const obj = {
                 device: device.options[device.selectedIndex].text,
                 r: fps.value,

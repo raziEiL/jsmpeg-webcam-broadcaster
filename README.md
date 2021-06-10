@@ -14,3 +14,8 @@ But is not hard to understand the meaning of the app fields.
 
 ## Preview
 ![](https://github.com/raziEiL/webcam-broadcaster/blob/master/git-img/webcam-broadcaster-01.png "app screenshot")
+
+# Contacts  
+mr.raz4291@gmail.com  
+[Steam](http://steamcommunity.com/id/raziEiL)  
+[Discord сервер Alliance](https://discord.gg/pQPzazkpBq)

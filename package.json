@@ -16,7 +16,9 @@
     "webcamera",
     "stream",
     "jsmpeg",
-    "electron"
+    "electron",
+    "mpeg1",
+    "ts-mpeg"
   ],
   "repository": {
     "type": "git",

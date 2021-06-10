@@ -1,5 +1,5 @@
 {
-  "name": "webcam-broadcaster",
+  "name": "jsmpeg-webcam-broadcaster",
   "version": "1.0.2",
   "description": "Simple FFmpeg GUI for webcam streaming",
   "main": "./src/main.js",
@@ -10,7 +10,7 @@
     "package": "electron-forge package",
     "make": "electron-forge make"
   },
-  "productName": "Webcam Broadcaster",
+  "productName": "JSMpeg Webcam Broadcaster",
   "keywords": [
     "ffmpeg",
     "webcamera",
@@ -20,7 +20,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/raziEiL/webcam-broadcaster.git"
+    "url": "https://github.com/raziEiL/jsmpeg-webcam-broadcaster.git"
   },
   "author": {
     "name": "Denis Medvedev (raziEiL)",
@@ -48,7 +48,7 @@
         {
           "name": "@electron-forge/maker-squirrel",
           "config": {
-            "name": "webcam_broadcaster"
+            "name": "jsmpeg_webcam_broadcaster"
           }
         },
         {

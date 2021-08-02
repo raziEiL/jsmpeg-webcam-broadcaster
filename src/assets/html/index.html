@@ -13,6 +13,7 @@
 <body>
     <main>
         <form>
+            <h1>Настройки подключения</h1>
             <label for="url">Сервер</label>
             <input type="url" id="url" name="url" pattern="https?:\/\/.*" placeholder="https://example.com" required>
             <label for="pw">Ключ потока</label>
@@ -28,13 +29,24 @@
                 <option value="1500" selected>Среднее</option>
                 <option value="1000">Низкое</option>
             </select>
-            <label for="fps">Fps</label>
+            <label for="fps">FPS</label>
             <input type="number" id="fps" value="30" min="10" max="60" required>
+            <hr>
+            <h1>Профиль пользователя</h1>
+            <label for="nickname">Имя</label>
+            <input type="text" id="nickname" name="nickname" maxlength="20" pattern="[a-z\d]+" required>
+            <label for="team">Команда</label>
+            <select name="team" id="team" required>
+                <option value="0" selected>1</option>
+                <option value="1">2</option>
+            </select>
+            <hr>
+            <h1>Управление</h1>
             <input id="submit" type="submit" value="Запустить трансляцию">
             <p id="stats"></p>
         </form>
+        <hr>
     </main>
-    <hr>
     <footer>
         <p>Версия: <span id="version"></span></p>
         <p>© Copyright 2021, Medvedev Denis</p>

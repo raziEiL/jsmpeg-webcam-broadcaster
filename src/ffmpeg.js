@@ -2,7 +2,7 @@ const child_process = require("child_process");
 const EventEmitter = require("events");
 const path = require("path");
 const FFMPEG_PATH = path.join(__dirname, "ffmpeg/ffmpeg.exe");
-const argsFromOpts = (opts) => ["-f", "dshow", "-i", `video=${opts.device}`, "-r", `${opts.r}`, "-f", "mpegts", "-codec:v", "mpeg1video", "-b:v", `${opts.v}k`, "-bf", "0", "-headers", `Authorization: ${opts.auth}`, `${opts.url}`];
+const argsFromOpts = (opts) => ["-f", "dshow", "-i", `video=${opts.device}`, "-r", `${opts.r}`, "-f", "mpegts", "-codec:v", "mpeg1video", "-b:v", `${opts.v}k`, "-bf", "0", "-headers", `Authorization: ${opts.auth}\r\nX-Team: ${opts.team}\r\nX-Nickname: ${opts.nickname}`, `${opts.url}`];
 /*
 * RegEx to get dshow lines
 * [dshow @ 000001515b47d7c0] DirectShow video devices (some may be both video and audio devices)
@@ -19,6 +19,7 @@ const REGEX_SIZE = /size=\s*(\d*\w*)/;
  * r: framerate
  * v: bitrate (kb/sec)
  * auth: Authorization header password
+ * team: Team number custom header
  * url: server where to stream
  */
 class FFmpeg extends EventEmitter {
@@ -37,7 +38,9 @@ class FFmpeg extends EventEmitter {
         if (this.child)
             return;
 
-        this.child = child_process.spawn(FFMPEG_PATH, argsFromOpts(this.opts));
+        const paramLine = argsFromOpts(this.opts);
+        console.log(FFMPEG_PATH, paramLine.toString());
+        this.child = child_process.spawn(FFMPEG_PATH, paramLine);
         this.connected = false;
         this.emit("connection");
 

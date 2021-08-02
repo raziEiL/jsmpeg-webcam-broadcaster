@@ -21,6 +21,8 @@ window.addEventListener("DOMContentLoaded", () => {
     const device = document.querySelector("#device");
     const url = document.querySelector("#url");
     const auth = document.querySelector("#auth");
+    const team = document.querySelector("#team");
+    const nickname = document.querySelector("#nickname");
     const fps = document.querySelector("#fps");
     const bitrate = document.querySelector("#bitrate");
     const version = document.querySelector("#version");
@@ -40,6 +42,10 @@ window.addEventListener("DOMContentLoaded", () => {
             auth.value = cookie.auth;
         if (cookie.url)
             url.value = cookie.url;
+        if (cookie.team)
+            team.value = cookie.team;
+        if (cookie.nickname)
+            nickname.value = cookie.nickname;
         console.log("cookie loaded");
     }
 
@@ -90,7 +96,9 @@ window.addEventListener("DOMContentLoaded", () => {
                 r: fps.value,
                 v: bitrate.value,
                 auth: auth.value,
-                url: url.value
+                url: url.value,
+                team: team.value,
+                nickname: nickname.value
             };
             ffmpeg.updateOpts(obj).run();
             // store cookie

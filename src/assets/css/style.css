@@ -14,20 +14,29 @@ html {
 
 body {
     padding: 1rem;
+    margin: 0;
     transition: background-color 1s ease-in-out;
+}
+
+h1 {
+    font-size: 18px;
+}
+
+main {
+    width: 16em;
+    margin: 0 auto;
 }
 
 form {
     display: block;
-    margin: 0 auto;
-    width: 14em;
     position: relative;
 }
 
 label {
     display: block;
-    margin-bottom: 0.2em;
+    margin-bottom: 0.4em;
     line-height: 1.5;
+    font-weight: bold;
 }
 
 input,
@@ -41,7 +50,7 @@ select {
     border-radius: .25rem;
     transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
     font-size: 13px;
-    margin-bottom: 0.4em;
+    margin-bottom: 0.8em;
 }
 
 #submit {
@@ -53,7 +62,7 @@ select {
 }
 
 hr {
-    margin: 3rem 0 1rem 0;
+    margin: 2rem 0;
     border-top: 1px solid #202325;
     border-bottom: none;
     border-radius: 5px;
@@ -79,7 +88,7 @@ img {
 #update-icon {
     position: absolute;
     cursor: pointer;
-    top: 131px;
+    top: 128px;
     right: -34px;
     opacity: 0.9;
     height: 20px;

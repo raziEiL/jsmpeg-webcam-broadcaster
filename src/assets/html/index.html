@@ -15,7 +15,7 @@
         <form>
             <h1>Настройки подключения</h1>
             <label for="url">Сервер</label>
-            <input type="url" id="url" name="url" pattern="https?:\/\/.*" placeholder="https://example.com" required>
+            <input type="url" id="url" name="url" pattern="^https?:\/\/.*$" placeholder="https://example.com" required>
             <label for="pw">Ключ потока</label>
             <input type="password" id="auth" name="auth" value="">
             <label for="device">Источник</label>
@@ -34,7 +34,8 @@
             <hr>
             <h1>Профиль пользователя</h1>
             <label for="nickname">Имя</label>
-            <input type="text" id="nickname" name="nickname" maxlength="20" pattern="[a-z\d]+" required>
+            <input type="text" id="nickname" name="nickname" maxlength="20"
+                pattern="^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{0,29}$" required>
             <label for="team">Команда</label>
             <select name="team" id="team" required>
                 <option value="0" selected>1</option>
